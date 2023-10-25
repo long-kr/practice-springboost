@@ -1,22 +1,30 @@
 package com.bugblogs.bugsblog.beans;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
+@Entity
 public class Blog {
-    private String author;
-    private String name;
+    @Id
+    @GeneratedValue
+    private long id;
+    private long authorId;
+    private String title;
     private String content;
 
-    public Blog(String author, String name, String content) {
-        this.author = author;
-        this.name = name;
+    public Blog(long authorId, String title, String content) {
+        this.authorId = authorId;
+        this.title = title;
         this.content = content;
     }
 
-    public String getAuthor() {
-        return author;
+    public long getAuthorId() {
+        return authorId;
     }
 
     public String getName() {
-        return name;
+        return title;
     }
 
     public String getContent() {
@@ -25,7 +33,7 @@ public class Blog {
 
     @Override
     public String toString() {
-        return "Blog [author=" + author + ", name=" + name + ", content=" + content + "]";
+        return "Blog [authorId=" + authorId + ", title=" + title + ", content=" + content + "]";
     }
 
 }
