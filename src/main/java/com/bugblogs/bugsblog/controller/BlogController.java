@@ -13,12 +13,12 @@ public class BlogController {
 
     @GetMapping("/blogs")
     public List<Blog> getBlogs() {
-        return Arrays.asList(new Blog("Long", "Long story of a night", "......verylong"));
+        return Arrays.asList(new Blog(1, "1234", "Long story of a night", "......verylong"));
     }
 
     @GetMapping("/blogs/1")
     public Blog getBlogDetails() {
-        return new Blog("Public", "One Thousand and One Nightss", "one thouse story....");
+        return new Blog(2, "1234", "One Thousand and One Nightss", "one thouse story....");
     }
 
 }

@@ -9,21 +9,26 @@ public class Blog {
     @Id
     @GeneratedValue
     private long id;
-    private long authorId;
+    private String author;
     private String title;
     private String content;
 
-    public Blog(long authorId, String title, String content) {
-        this.authorId = authorId;
+    public Blog(long id, String author, String title, String content) {
+        this.id = id;
+        this.author = author;
         this.title = title;
         this.content = content;
     }
 
-    public long getAuthorId() {
-        return authorId;
+    public long getId() {
+        return id;
     }
 
-    public String getName() {
+    public String getAuthorId() {
+        return author;
+    }
+
+    public String getTitle() {
         return title;
     }
 
@@ -33,7 +38,7 @@ public class Blog {
 
     @Override
     public String toString() {
-        return "Blog [authorId=" + authorId + ", title=" + title + ", content=" + content + "]";
+        return "Blog [authorId=" + author + ", title=" + title + ", content=" + content + "]";
     }
 
 }
