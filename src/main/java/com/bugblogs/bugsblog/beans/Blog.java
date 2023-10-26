@@ -9,9 +9,14 @@ public class Blog {
     @Id
     @GeneratedValue
     private long id;
+
     private String author;
     private String title;
     private String content;
+
+    public Blog() {
+
+    }
 
     public Blog(long id, String author, String title, String content) {
         this.id = id;
