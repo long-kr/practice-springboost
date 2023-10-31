@@ -1,4 +1,4 @@
-package com.bugblogs.bugsblog;
+package com.bugblogs;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
