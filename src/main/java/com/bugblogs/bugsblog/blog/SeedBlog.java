@@ -1,26 +1,33 @@
 package com.bugblogs.bugsblog.blog;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
-import com.bugblogs.utils.ReadFile;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 
-public class SeedBlog {
+@Component
+public class SeedBlog implements CommandLineRunner {
+
+    private final BlogRepository blogRepository;
 
     ObjectMapper objectMapper = new ObjectMapper();
 
-    // Enable pretty printing for JSON output
-    // objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+    public SeedBlog(BlogRepository blogRepository) {
+        this.blogRepository = blogRepository;
+    }
 
-    public void seed() {
+    @Override
+    public void run(String... args) throws Exception {
         ArrayList<Blog> blogs = objectMapper.readValue(new File("src/main/resources/blogs.json"),
                 objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, Blog.class));
 
         for (Blog blog : blogs) {
-
+            blogRepository.save(blog);
         }
     }
 }

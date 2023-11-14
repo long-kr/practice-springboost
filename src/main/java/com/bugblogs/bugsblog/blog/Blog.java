@@ -1,6 +1,7 @@
 package com.bugblogs.bugsblog.blog;
 
-import jakarta.persistence.Column;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,16 +14,26 @@ public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long blogId;
+
     private long authorId;
-    @Column(name = "blog_title")
+
+    @JsonProperty("blog_title")
     private String blogTitle;
+
+    @JsonProperty("blog_content")
     private String blogContent;
+
+    @JsonProperty("blog_status")
     private String blogStatus;
+
+    @JsonProperty("blog_view_number")
     private long blogViewNumber;
+
     private String img;
 
     public Blog(long blogId, long authorId, String blogTitle, String blogContent, String blogStatus,
             long blogViewNumber, String img) {
+
         this.blogId = blogId;
         this.authorId = authorId;
         this.blogTitle = blogTitle;
