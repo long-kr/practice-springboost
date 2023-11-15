@@ -1,10 +1,8 @@
 package com.bugblogs.bugsblog.blog;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
