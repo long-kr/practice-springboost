@@ -41,6 +41,12 @@ public class UserController {
 
     @DeleteMapping("/users/{id}")
     public void deleteUser(@PathVariable long id) {
+        Optional<User> user = userRepository.findById(id);
 
+        if (user.isEmpty()) {
+            throw new RuntimeException("Uer is not valid" + id);
+        }
+
+        userRepository.save(user.deleteUser());
     }
 }
