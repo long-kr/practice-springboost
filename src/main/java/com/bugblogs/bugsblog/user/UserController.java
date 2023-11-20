@@ -44,9 +44,11 @@ public class UserController {
         Optional<User> user = userRepository.findById(id);
 
         if (user.isEmpty()) {
-            throw new RuntimeException("Uer is not valid" + id);
+            throw new RuntimeException("User is not valid" + id);
         }
 
-        userRepository.save(user.deleteUser());
+        user.get().deleteUser();
+
+        userRepositor.
     }
 }
