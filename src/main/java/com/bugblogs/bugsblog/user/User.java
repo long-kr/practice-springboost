@@ -1,88 +1,68 @@
 package com.bugblogs.bugsblog.user;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.bugblogs.bugsblog.blog.Blog;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Entity
 @Table
 public class User {
+
+    public static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long userId;
 
+    @Column(nullable = false)
     @JsonProperty("user_name")
-    private String userName;
+    private String username;
 
+    @Column(nullable = false, unique = true)
     @JsonProperty("user_email")
-    private String userEmail;
+    private String email;
 
+    @Column(nullable = false)
     @JsonProperty("user_password")
-    private String userPassword;
+    private String password;
 
+    @Column(nullable = false)
     @JsonProperty("user_status")
-    private int userStatus;
+    private int status;
 
     @JsonProperty("user_pic")
-    private String userPic;
+    private String pic;
 
+    @Column(nullable = false)
     @JsonProperty("user_role")
-    private String userRole;
-
-    public User(long userId, String userName, String userEmail, String userPassword, int userStatus, String userPic,
-            String userRole) {
-        this.userId = userId;
-        this.userName = userName;
-        this.userEmail = userEmail;
-        this.userPassword = userPassword;
-        this.userStatus = userStatus;
-        this.userPic = userPic;
-        this.userRole = userRole;
-    }
-
-    public User() {
-
-    }
+    private String role;
 
     public void deleteUser() {
-        this.userStatus = 0;
+        this.status = 0;
     }
 
-    public long getUserId() {
-        return userId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public int getUserStatus() {
-        return userStatus;
-    }
-
-    public String getUserPic() {
-        return userPic;
-    }
-
-    public String getUserRole() {
-        return userRole;
-    }
-
-    @Override
-    public String toString() {
-        return "User [userId=" + userId + ", userName=" + userName + ", userEmail=" + userEmail + ", userPassword="
-                + userPassword + ", userStatus=" + userStatus + ", userPic=" + userPic + ", userRole=" + userRole + "]";
-    }
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "blog_id")
+    private List<Blog> posts = new ArrayList<>();
 }

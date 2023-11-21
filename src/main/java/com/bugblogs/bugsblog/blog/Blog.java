@@ -2,12 +2,23 @@ package com.bugblogs.bugsblog.blog;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Entity
 @Table
 public class Blog {
@@ -15,71 +26,21 @@ public class Blog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long blogId;
 
-    private long authorId;
-
+    @Column(nullable = false)
     @JsonProperty("blog_title")
-    private String blogTitle;
+    private String title;
 
+    @Column(nullable = false)
     @JsonProperty("blog_content")
-    private String blogContent;
+    private String content;
 
+    // 0 delete, 1 public, 2 draft,
+    @Column(nullable = false)
     @JsonProperty("blog_status")
-    private String blogStatus;
+    private int status;
 
+    @Column(nullable = false)
     @JsonProperty("blog_view_number")
-    private long blogViewNumber;
-
-    private String img;
-
-    public Blog(long blogId, long authorId, String blogTitle, String blogContent, String blogStatus,
-            long blogViewNumber, String img) {
-
-        this.blogId = blogId;
-        this.authorId = authorId;
-        this.blogTitle = blogTitle;
-        this.blogContent = blogContent;
-        this.blogStatus = blogStatus;
-        this.blogViewNumber = blogViewNumber;
-        this.img = img;
-    }
-
-    public Blog() {
-
-    }
-
-    public long getBlogId() {
-        return blogId;
-    }
-
-    public long getAuthorId() {
-        return authorId;
-    }
-
-    public String getBlogTitle() {
-        return blogTitle;
-    }
-
-    public String getBlogContent() {
-        return blogContent;
-    }
-
-    public String getBlogStatus() {
-        return blogStatus;
-    }
-
-    public long getBlogViewNumber() {
-        return blogViewNumber;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    @Override
-    public String toString() {
-        return "Blog [blogId=" + blogId + ", authorId=" + authorId + ", blogTitle=" + blogTitle + ", blogContent="
-                + blogContent + ", blogStatus=" + blogStatus + ", blogViewNumber=" + blogViewNumber + ", img=" + img
-                + "]";
-    }
+    private long view;
 
 }
