@@ -3,7 +3,7 @@ package com.bugblogs.bugsblog.user;
 import java.util.List;
 
 public interface IUserService {
-    void saveUser(User user);
+    void saveUser(UserDto userDto);
 
     User findUserByEmail(String email);
 
