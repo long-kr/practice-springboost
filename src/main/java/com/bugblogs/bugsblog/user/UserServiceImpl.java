@@ -1,6 +1,7 @@
 package com.bugblogs.bugsblog.user;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -35,19 +36,19 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public User findUserByEmail(String email) {
+    public Optional<User> findUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
     @Override
-    public List<User> findAllUsers() {
+    public List<UserDto> findAllUsers() {
         List<User> users = userRepository.findAll();
 
         return users.stream().map(this::mapToUserDto).collect(Collectors.toList());
     }
 
-    private User mapToUserDto(User user) {
-        User userDto = new User();
+    private UserDto mapToUserDto(User user) {
+        UserDto userDto = new UserDto();
         userDto.setUsername(user.getUsername());
         userDto.setEmail(user.getEmail());
         return userDto;

@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserController {
-    private UserRepository userRepository;
+    private IUserRepository userRepository;
 
-    public UserController(UserRepository userRepository) {
+    public UserController(IUserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

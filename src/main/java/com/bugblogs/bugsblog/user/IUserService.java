@@ -1,12 +1,13 @@
 package com.bugblogs.bugsblog.user;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IUserService {
     void saveUser(UserDto userDto);
 
-    User findUserByEmail(String email);
+    Optional<User> findUserByEmail(String email);
 
-    List<User> findAllUsers();
+    List<UserDto> findAllUsers();
 
 }

@@ -1,5 +1,7 @@
 package com.bugblogs.bugsblog.user;
 
+import com.bugblogs.bugsblog.types.UserRole;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -35,7 +37,6 @@ public class UserDto {
 
     private String pic;
 
-    @NotEmpty(message = "Role cant be empty") // TODO: change to type enum
-    private String role;
+    private UserRole role = UserRole.USER;
 
 }

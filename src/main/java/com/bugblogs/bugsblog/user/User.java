@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.bugblogs.bugsblog.blog.Blog;
+import com.bugblogs.bugsblog.types.UserRole;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Column;
@@ -56,7 +57,7 @@ public class User {
 
     @Column(nullable = false)
     @JsonProperty("user_role")
-    private String role;
+    private UserRole role;
 
     public void deleteUser() {
         this.status = 0;
