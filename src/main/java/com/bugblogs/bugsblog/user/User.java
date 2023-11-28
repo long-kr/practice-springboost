@@ -34,7 +34,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long userId;
+    private long id;
 
     @Column(nullable = false)
     @JsonProperty("user_name")

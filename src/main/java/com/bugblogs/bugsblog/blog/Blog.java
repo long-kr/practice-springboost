@@ -25,7 +25,7 @@ public class Blog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long blogId;
+    private long id;
 
     @Column(nullable = false)
     @JsonProperty("blog_title")

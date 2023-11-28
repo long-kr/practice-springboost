@@ -1,0 +1,10 @@
+[
+    {
+        "user_name": "Long Huynh",
+        "user_email": "long7093@gmail.com",
+        "user_password": "123456",
+        "user_status": 1,
+        "user_pic": "",
+        "user_role": "ADMIN"
+    }
+]

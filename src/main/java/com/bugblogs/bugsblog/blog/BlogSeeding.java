@@ -9,13 +9,13 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
-public class SeedBlog implements CommandLineRunner {
+public class BlogSeeding implements CommandLineRunner {
 
-    private final BlogRepository blogRepository;
+    private final IBlogRepository blogRepository;
 
     ObjectMapper objectMapper = new ObjectMapper();
 
-    public SeedBlog(BlogRepository blogRepository) {
+    public BlogSeeding(IBlogRepository blogRepository) {
         this.blogRepository = blogRepository;
     }
 

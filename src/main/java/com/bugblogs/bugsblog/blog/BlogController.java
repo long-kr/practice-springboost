@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class BlogController {
 
-    private BlogRepository blogRepository;
+    private IBlogRepository blogRepository;
 
-    public BlogController(BlogRepository blogRepository) {
+    public BlogController(IBlogRepository blogRepository) {
         this.blogRepository = blogRepository;
     }
 
